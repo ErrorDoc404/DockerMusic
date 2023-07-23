@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  musicbot:
+    build: .
+    container_name: musicbot
+    restart: always
+    networks:
+      - lavawebsite
+    depends_on:
+      - lavalink
+    volumes:
+      - ./config.js:/usr/src/app/config.js:ro
+
+  lavalink:
+    image: fredboat/lavalink:dev
+    container_name: lavalink
+    hostname: lavalink
+    restart: unless-stopped
+    networks:
+      - lavawebsite
+    volumes:
+      - ./docker/application.yml:/opt/Lavalink/application.yml:ro
+
+networks:
+  lavawebsite:
