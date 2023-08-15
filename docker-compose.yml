@@ -1,26 +1,48 @@
 version: "3"
 
 services:
-  musicbot:
-    build: .
-    container_name: musicbot
+  # frontend:
+  #   build: ./frontend
+  #   container_name: dockervue
+  #   command: npm run start
+  #   restart: always
+  #   environment:
+  #     PORT: 8080:8080
+  #   networks:
+  #     - dockerserver
+  #   depends_on:
+  #     - discord-musicbot
+  #   volumes:
+  #     - ./backend/config.js:/usr/src/config.js:ro
+  #   ports:
+  #     - "8000:8000"
+  discord-musicbot:
+    build: ./backend
+    container_name: dockermusic
+    command: npm run watch
     restart: always
+    environment:
+      PORT: 8000:8000
     networks:
-      - lavawebsite
+      - dockerserver
     depends_on:
       - lavalink
     volumes:
-      - ./config.js:/usr/src/app/config.js:ro
+      - ./backend/config.js:/usr/src/config.js:ro
+    ports:
+      - "8000:8000"
 
   lavalink:
-    image: fredboat/lavalink:dev
-    container_name: lavalink
+    image: fredboat/lavalink
+    container_name: dockerlink
+    environment:
+      PORT: 2333:2333
     hostname: lavalink
     restart: unless-stopped
     networks:
-      - lavawebsite
+      - dockerserver
     volumes:
-      - ./docker/application.yml:/opt/Lavalink/application.yml:ro
+      - ./lavalink/application.yml:/opt/Lavalink/application.yml:ro
 
 networks:
-  lavawebsite:
+  dockerserver: ~

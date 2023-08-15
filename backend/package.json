@@ -1,0 +1,69 @@
+{
+    "name": "backend",
+    "version": "2.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index",
+        "rm-logs": "rm logs.log",
+        "lint": "prettier --check .",
+        "deploy": "node deploy/deployGlobal",
+        "guild": "node deploy/deployGuild",
+        "destroy-guild": "node deploy/destroyGuild",
+        "destroy-global": "node deploy/destroyGlobal",
+        "ddev": "cd dashboard && npm run dev",
+        "dbuild": "cd dashboard && npm run build && npm run export",
+        "dstart": "cd dashboard && npm run start",
+        "watch": "nodemon -L index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ErrorDoc404/LavaWebsite.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ErrorDoc404/LavaWebsite/issues"
+    },
+    "homepage": "https://github.com/ErrorDoc404/LavaWebsite#readme",
+    "dependencies": {
+        "better-erela.js-apple": "^0.1.0",
+        "better-erela.js-spotify": "^1.3.11",
+        "colors": "^1.4.0",
+        "connect-mongo": "^4.6.0",
+        "cors": "^2.8.5",
+        "cpu-stat": "^2.0.1",
+        "discord.js": "^14.8.0",
+        "dotenv": "^16.0.3",
+        "erela.js": "^2.4.0",
+        "erela.js-deezer": "^1.0.7",
+        "erela.js-facebook": "^1.0.4",
+        "erela.js-filters": "^1.2.7",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "fs": "^0.0.2",
+        "generate-serial-key": "^2.0.0",
+        "is-empty": "^1.2.0",
+        "moment": "^2.29.4",
+        "moment-duration-format": "^2.3.2",
+        "mongoose": "^6.8.1",
+        "parse-ms": "^2.1.0",
+        "passport": "^0.6.0",
+        "passport-discord": "^0.1.4",
+        "passport-oauth2-refresh": "^2.1.0",
+        "path": "^0.12.7",
+        "pretty-ms": "^2.1.0",
+        "socket.io": "^4.5.3",
+        "something-random-on-discord": "^3.4.4"
+    },
+    "devDependencies": {
+        "eslint": "^8.45.0",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-n": "^16.0.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^6.1.1",
+        "nodemon": "^3.0.1"
+    }
+}
